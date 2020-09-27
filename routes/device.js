@@ -1,9 +1,20 @@
-var express = require('express');
-var router = express.Router();
+const express = require('express');
+const router = express.Router();
+const fs = require('fs'); 
 
-/* GET users listing. */
-router.get('/', function(req, res, next) {
-  res.send('respond with a resource');
+/* GET device log. */
+router.get('/read/:serial/:token', function(req, res, next) {
+  const {
+    serial,
+    token,
+  } = req.params;
+
+  console.log(serial)
+
+  res.render('device', {
+    serial,
+    log: 'Logs',
+  });
 });
 
 module.exports = router;
